@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nordigen Rails app</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link href="https://unpkg.com/nordigen-bank-ui@1.0.1/package/src/selector.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
+    <%= yield %>
+
+
+  <%= content_tag :div, class: "institution_list", data: {institutions: @list} do %>
+  <% end %>
+  <script src="https://unpkg.com/nordigen-bank-ui@1.0.1/package/src/selector.js"></script>
+  <script>
+      const config = {
+          redirectUrl: 'https://www.nordigen.com',
+          logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg'
+      };
+
+      const data = document.querySelector(".institution_list").getAttribute("data-institutions"); 
+      new institutionSelector(JSON.parse(data), 'institution-modal-content', config);
+
+      const institutionList = document.querySelectorAll(".list-institution a");  
+
+      institutionList.forEach((institution) => {
+          institution.addEventListener('click', (e) => {
+
+            const id = institution.getAttribute('data-institution');
+            if(id) {
+                window.location.href=`/agreements/${id}`;
+            }
+
+          }, false);
+      })
+
+  </script>
+  </body>
+</html>
