@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'dotenv/load'
 require 'securerandom'
 require_relative "lib/nordigen-ruby"
 
@@ -7,15 +6,15 @@ module Nordigen
   # Load token from .env file or replace with a string value
   # Secrets can be generated from ob.nordigen.com portal
   client = NordigenClient.new(
-    secret_id: ENV["SECRET_ID"],
-    secret_key: ENV["SECRET_KEY"]
+    secret_id: "SECRET_ID",
+    secret_key: "SECRET_KEY"
   )
 
   # Generate token
   token_data = client.generate_token()
 
   # Use existing token
-  # client.set_token(ENV["TOKEN"])
+  # client.set_token("YOUR_TOKEN")
 
   # Get all institution by providing country code in ISO 3166 format
   institutions = client.institution.get_institutions("LV")

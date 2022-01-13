@@ -8,5 +8,4 @@ gemspec
 gem "rake", "~> 13.0"
 gem "faraday", "~> 1.8.0"
 gem "faraday_middleware", "~> 1.2.0"
-gem "dotenv", "~> 2.7.6"
 gem "test-unit", "~> 3.5.3"

@@ -1,4 +1,4 @@
-# Nordigen-Ruby example app with Ruby on Rails
+# Nordigen Ruby example app with Ruby on Rails
 
 ## Set-up
 ---

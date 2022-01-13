@@ -28,22 +28,20 @@ Example code can be found in `main.rb` file and Ruby on Rails example applicatio
 
 
 ```ruby
-require 'dotenv/load'
 require 'securerandom'
-
 require 'nordigen-ruby'
 
 # Get secret_id and secret_key from ob.nordigen.com portal and pass to NordigenClient or load from .env file
 client = Nordigen::NordigenClient.new(
-  secret_id: ENV["SECRET_ID"],
-  secret_key: ENV["SECRET_KEY"]
+  secret_id: "SECRET_ID",
+  secret_key: "SECRET_KEY"
 )
 
 # Generate new access token. Token is valid for 24 hours
 token_data = client.generate_token()
 
 # Use existing token
-client.set_token(ENV["TOKEN"])
+client.set_token("YOUR_TOKEN")
 
 # Get access and refresh token
 # Note: access_token is automatically injected to other requests after you successfully obtain it
@@ -89,7 +87,7 @@ accounts = client.requisition.get_requisition_by_id(requisition_id)
 account_id =  accounts.accounts[0]
 
 # Instantiate account object
-account = client.account(account_id)
+account = client.account_api(account_id)
 
 # Fetch account metadata
 meta_data = account.get_metadata()
