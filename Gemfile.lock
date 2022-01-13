@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    nordigen-ruby (1.0.0)
+    nordigen-ruby (1.0.1)
       dotenv (~> 2.7.6)
       faraday (~> 1.8.0)
       faraday_middleware (~> 1.2.0)
