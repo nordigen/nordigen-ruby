@@ -128,7 +128,7 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.0-x86_64-linux)
       racc (~> 1.4)
-    nordigen-ruby (1.0.0)
+    nordigen-ruby (1.0.1)
       dotenv (~> 2.7.6)
       faraday (~> 1.8.0)
       faraday_middleware (~> 1.2.0)

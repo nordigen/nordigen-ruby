@@ -6,8 +6,6 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://unpkg.com/nordigen-bank-ui@1.0.1/package/src/selector.min.css" rel="stylesheet" />
   </head>
 
@@ -24,10 +22,10 @@
           logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg'
       };
 
-      const data = document.querySelector(".institution_list").getAttribute("data-institutions"); 
+      const data = document.querySelector(".institution_list").getAttribute("data-institutions");
       new institutionSelector(JSON.parse(data), 'institution-modal-content', config);
 
-      const institutionList = document.querySelectorAll(".list-institution a");  
+      const institutionList = document.querySelectorAll(".list-institution a");
 
       institutionList.forEach((institution) => {
           institution.addEventListener('click', (e) => {
