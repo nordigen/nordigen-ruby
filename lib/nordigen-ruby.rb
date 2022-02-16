@@ -93,8 +93,9 @@ module Nordigen
             new_requsition = @requisition.create_requisition(
                 redirect_url: redirect_url,
                 reference: reference_id,
-                institution_id: institution_id
-        )
+                institution_id: institution_id,
+                agreement: new_agreement.id
+            )
 
             return new_requsition
         end
