@@ -1,8 +1,9 @@
 require "faraday"
 require "faraday_middleware"
 
+
 require "nordigen_ruby/api/institutions"
-require "nordigen_ruby/api/agreements"
+require"nordigen_ruby/api/agreements"
 require "nordigen_ruby/api/requisitions"
 require "nordigen_ruby/api/account"
 
