@@ -1,5 +1,3 @@
-require 'active_support/all'
-
 module Nordigen
     class AccountApi
 
@@ -18,18 +16,7 @@ module Nordigen
                 url = "#{url}#{path}/"
             end
 
-            parameters = {}
-            params.each do |key, value|
-                if value
-                    parameters[key] = value
-                end
-            end
-
-            if parameters
-                url = "#{url}?#{parameters.to_query}"
-            end
-
-            return client.request.get(url).body
+            return client.request(params).get(url).body
         end
 
         def get_metadata

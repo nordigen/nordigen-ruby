@@ -3,7 +3,7 @@ require "faraday_middleware"
 
 
 require "nordigen_ruby/api/institutions"
-require"nordigen_ruby/api/agreements"
+require "nordigen_ruby/api/agreements"
 require "nordigen_ruby/api/requisitions"
 require "nordigen_ruby/api/account"
 
@@ -28,13 +28,22 @@ module Nordigen
             @requisition = RequisitionsApi.new(client=self)
         end
 
-        def request
+        def request(params)
             # HTTP client request
+            parameters = {}
+            params.each do |key, value|
+                if value
+                    parameters[key] = value
+                end
+            end
+
             @request ||= Faraday.new do |conn|
                 conn.url_prefix = BASE_URL
                 conn.headers = @@headers
                 conn.request :json
+                conn.params = parameters
                 conn.response :json, parser_options: { object_class: OpenStruct }
+                puts conn.url
             end
         end
 
