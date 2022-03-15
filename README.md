@@ -71,7 +71,7 @@ init = client.init_session(
 
 link = init.link # bank authorization link
 puts init.link
-requisition_id = init.requisition_id # requisition id that is needed to get an account_id
+requisition_id = init.id # requisition id that is needed to get an account_id
 ```
 
 After successful authorization with a bank you can fetch your data (details, balances, transactions)
@@ -82,9 +82,9 @@ After successful authorization with a bank you can fetch your data (details, bal
 ```ruby
 
 # Get account id after you have completed authorization with a bank.
-accounts = client.requisition.get_requisition_by_id(requisition_id)
+requisition_data = client.requisition.get_requisition_by_id(requisition_id)
 # Get account id from list
-account_id =  accounts.accounts[0]
+account_id =  requisition_data.accounts[0]
 
 # Instantiate account object
 account = client.account_api(account_id)
