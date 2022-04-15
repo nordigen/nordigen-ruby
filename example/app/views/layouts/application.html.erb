@@ -1,43 +1,64 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Nordigen Rails app</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+    <head>
+        <title>Nordigen Rails app</title>
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <%= csrf_meta_tags %>
+        <%= csp_meta_tag %>
 
-    <link href="https://unpkg.com/nordigen-bank-ui@1.0.1/package/src/selector.min.css" rel="stylesheet" />
-  </head>
+        <link href="https://unpkg.com/nordigen-bank-ui@1.3.0/package/src/selector.min.css" rel="stylesheet" />
+    </head>
 
-  <body>
-    <%= yield %>
+    <body>
+        <%= yield %>
 
+        <%= content_tag :div, class: "institution_list", data: {institutions: @list} do %>
+        <% end %>
 
-  <%= content_tag :div, class: "institution_list", data: {institutions: @list} do %>
-  <% end %>
-  <script src="https://unpkg.com/nordigen-bank-ui@1.0.1/package/src/selector.js"></script>
-  <script>
-      const config = {
-          redirectUrl: 'https://www.nordigen.com',
-          logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg'
-      };
+        <script src="https://unpkg.com/nordigen-bank-ui@1.3.0/package/src/selector.js"></script>
+        <script>
+            const config = {
+                redirectUrl: "https://www.nordigen.com",
+                logoUrl: 'https://cdn.nordigen.com/ais/Nordigen_Logo_Black.svg',
+                text: "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean mavdvd",
+                countryFilter: true,
+                styles: {
+                    // Primary
+                    fontFamily: 'https://fonts.googleapis.com/css2?family=Roboto&display=swap',
+                    fontSize: '15',
+                    backgroundColor: '#F2F2F2',
+                    textColor: '#222',
+                    // Modal
+                    modalTextColor: '#1B2021',
+                    modalBackgroundColor: '#fff',
+                    hoverColor: '#F1F1F1',
+                    // Button
+                    buttonColor: '#3A53EE',
+                    buttonTextColor: '#fff'
+                }
+            };
 
-      const data = document.querySelector(".institution_list").getAttribute("data-institutions");
-      new institutionSelector(JSON.parse(data), 'institution-modal-content', config);
+            const data = document.querySelector(".institution_list").getAttribute("data-institutions");
+            institutionSelector(JSON.parse(data), "institution-modal-content", config);
 
-      const institutionList = document.querySelectorAll(".list-institution a");
+            const container = document.querySelector(".institution-container");
+            const observer = new MutationObserver((event) => {
+                const institutions = Array.from(document.querySelectorAll(".ob-list-institution > a"));
+                console.log(institutions)
+                institutions.forEach((institution) => {
+                    institution.addEventListener("click", (e) => {
+                        e.preventDefault();
+                        const aspspId = e.currentTarget.getAttribute("data-institution");
+                        window.location.href = `/agreements/${aspspId}`;
+                    })
+                })
+            });
 
-      institutionList.forEach((institution) => {
-          institution.addEventListener('click', (e) => {
+            const conf = {
+                childList: true
+            };
+            observer.observe(container, conf);
 
-            const id = institution.getAttribute('data-institution');
-            if(id) {
-                window.location.href=`/agreements/${id}`;
-            }
-
-          }, false);
-      })
-
-  </script>
-  </body>
+        </script>
+    </body>
 </html>

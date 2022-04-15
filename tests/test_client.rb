@@ -2,8 +2,8 @@ require 'test/unit'
 require 'dotenv/load'
 require 'securerandom'
 
-require 'nordigen_ruby/api/institutions'
-require 'nordigen-ruby'
+require_relative '../lib/nordigen-ruby'
+require_relative '../lib/nordigen_ruby/api/institutions'
 
 module Nordigen
 
@@ -24,15 +24,15 @@ module Nordigen
         def test_generate_token
             # Test generate new token
             response = @client.generate_token()
-            assert_equal(response.access_expires, 86400)
+            assert_equal(response["access_expires"], 86400)
         end
 
 
         def test_exchange_token
             # Test exchange token
-            refresh_token = @client.generate_token().refresh
+            refresh_token = @client.generate_token()["refresh"]
             response = @client.exchange_token(refresh_token)
-            assert_equal(response.access_expires, 86400)
+            assert_equal(response["access_expires"], 86400)
         end
 
         def test_init_session
@@ -42,7 +42,7 @@ module Nordigen
             response = @client.init_session(
                 redirect_url: "https://nordigen.com", institution_id: id, reference_id: uuid
             )
-            assert_equal(response.institution_id, id)
+            assert_equal(response["institution_id"], id)
 
         end
 

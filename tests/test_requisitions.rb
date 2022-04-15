@@ -2,8 +2,8 @@ require 'test/unit'
 require 'dotenv/load'
 require 'securerandom'
 
-require 'nordigen_ruby/api/requisitions'
-require 'nordigen-ruby'
+require_relative '../lib/nordigen-ruby'
+require_relative '../lib/nordigen_ruby/api/requisitions'
 
 module Nordigen
 
@@ -26,29 +26,29 @@ module Nordigen
             # Test create requisition
             uuid = SecureRandom.uuid
             response = @requisition.create_requisition(**@req_params)
-            assert_equal(response.institution_id, @institution_id)
+            assert_equal(response["institution_id"], @institution_id)
         end
 
         def test_get_requisitions
             # Test get list of requisitions
             response = @requisition.get_requisitions()
-            assert_equal(response.previous, nil)
+            assert_equal(response["previous"], nil)
         end
 
         def test_get_requisition_by_id
             # Test get requisition by id
             new_requisition = @requisition.create_requisition(**@req_params)
-            id = new_requisition.id
+            id = new_requisition["id"]
             response = @requisition.get_requisition_by_id(id)
-            assert_equal(response.id, id)
+            assert_equal(response["id"], id)
         end
 
         def test_delete_requisition
             # Test delete requisition
             new_requisition = @requisition.create_requisition(**@req_params)
-            id = new_requisition.id
+            id = new_requisition["id"]
             response = @requisition.delete_requisition(id)
-            assert_equal(response.summary, "Requisition deleted")
+            assert_equal(response["summary"], "Requisition deleted")
         end
 
     end

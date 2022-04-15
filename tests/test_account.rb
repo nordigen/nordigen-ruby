@@ -1,8 +1,8 @@
 require 'test/unit'
 require 'dotenv/load'
 
-require 'nordigen_ruby/api/account'
-require 'nordigen-ruby'
+require_relative '../lib/nordigen_ruby/api/account'
+require_relative '../lib/nordigen-ruby'
 
 module Nordigen
 
@@ -18,27 +18,27 @@ module Nordigen
         def test_account_metadata
             # Test get account metadata
             response = @account.get_metadata()
-            assert_equal(response.institution_id, @institution_id)
+            assert_equal(response["institution_id"], @institution_id)
         end
 
 
         def test_account_details
             # Test get account details
             response = @account.get_details()
-            assert_equal(response.account.currency, "EUR")
+            assert_equal(response["account"]["currency"], "EUR")
         end
 
         def test_account_balances
             # Test get account balances
             response = @account.get_balances()
-            currency = response.balances[0].balanceAmount.currency
+            currency = response["balances"][0]["balanceAmount"]["currency"]
             assert_equal(currency, "EUR")
         end
 
         def test_account_transactions
             # Test get account transactions
             response = @account.get_transactions()
-            assert_equal(response.booked, nil)
+            assert_equal(response["booked"], nil)
         end
 
     end
