@@ -99,6 +99,13 @@ balances = account.get_balances()
 transactions = account.get_transactions()
 ```
 
+## Development
+
+Run all tests in a directory
+```bash
+ruby -Itest tests/tests.rb
+```
+
 ## Support
 
 For any inquiries please contact support at [support@nordigen.com](support@nordigen.com) or create an issue in repository.
