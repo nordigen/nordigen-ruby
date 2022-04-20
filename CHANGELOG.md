@@ -1,8 +1,9 @@
 # Changelog
 
-## [1.0.2] - 2022-04-19
+## [2.0.0] - 2022-04-20
 
-- Republish library with latest working gem
+- Use JSON response instead of OpenStruct
+- Add country filter
 
 
 ## [1.0.1] - 2022-01-13
