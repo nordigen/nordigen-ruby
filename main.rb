@@ -32,10 +32,11 @@ module Nordigen
         institution_id: id,
         reference_id: SecureRandom.uuid
     )
+    requisition_id = init["id"]
     puts init["link"]
 
     # Get account id after you have completed authorization with a bank
-    accounts = client.requisition.get_requisition_by_id(init["requisition_id"])
+    accounts = client.requisition.get_requisition_by_id(requisition_id)
 
     begin
         # Get account id from list

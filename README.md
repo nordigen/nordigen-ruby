@@ -70,8 +70,8 @@ init = client.init_session(
 )
 
 link = init["link"] # bank authorization link
-puts link
 requisition_id = init["id"] # requisition id that is needed to get an account_id
+puts link
 ```
 
 After successful authorization with a bank you can fetch your data (details, balances, transactions)
