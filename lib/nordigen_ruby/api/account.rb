@@ -9,15 +9,14 @@ module Nordigen
             @account_id = account_id
         end
 
-        def get(path = nil)
+        def get(path = nil, params = nil)
             # Create Get request
             url = "#{ENDPOINT}#{@account_id}/"
-            
             if path
                 url = "#{url}#{path}/"
             end
 
-            return client.request.get(url).body
+            return client.request(params).get(url).body
         end
 
         def get_metadata
@@ -36,9 +35,13 @@ module Nordigen
             return get("balances")
         end
 
-        def get_transactions
+        def get_transactions(date_from: nil, date_to: nil)
             # Access account transactions
-            return get("transactions")
+            date_range = {
+                "date_from" => date_from,
+                "date_to"   => date_to
+            }
+            return get("transactions", date_range)
         end
 
     end
