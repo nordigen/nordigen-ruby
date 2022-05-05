@@ -21,6 +21,9 @@ gem 'dotenv'
 
 gem 'nordigen-ruby'
 
+# Local gem
+# gem 'nordigen-ruby', path: '../'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
