@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.0.0] - 2022-04-20
+## [2.0.0] - 2022-05-05
 
 - Use JSON response instead of OpenStruct
 - Add country filter
