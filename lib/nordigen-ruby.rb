@@ -1,11 +1,10 @@
 require "faraday"
 require "faraday_middleware"
 
-
-require "nordigen_ruby/api/institutions"
-require "nordigen_ruby/api/agreements"
-require "nordigen_ruby/api/requisitions"
-require "nordigen_ruby/api/account"
+require_relative "nordigen_ruby/api/institutions"
+require_relative "nordigen_ruby/api/agreements"
+require_relative "nordigen_ruby/api/requisitions"
+require_relative "nordigen_ruby/api/account"
 
 module Nordigen
     class NordigenClient
@@ -41,9 +40,7 @@ module Nordigen
                 conn.url_prefix = BASE_URL
                 conn.headers = @@headers
                 conn.request :json
-                conn.params = parameters
-                conn.response :json, parser_options: { object_class: OpenStruct }
-                puts conn.url
+                conn.response :json
             end
         end
 
@@ -68,7 +65,7 @@ module Nordigen
                 raise Exception.new response.body
             end
 
-            @@headers["Authorization"] = "Bearer #{response.body.access}"
+            @@headers["Authorization"] = "Bearer #{response.body['access']}"
             request.headers = @@headers
             return response.body
         end
@@ -77,7 +74,7 @@ module Nordigen
             # Exchange refresh token for access token
             payload = {"refresh": refresh_token}
             response = self.request.post("token/refresh/", payload).body
-            @@headers["Authorization"] = "Bearer #{response.access}"
+            @@headers["Authorization"] = "Bearer #{response['access']}"
             request.headers = @@headers
             return response
         end
@@ -103,8 +100,9 @@ module Nordigen
             new_requsition = @requisition.create_requisition(
                 redirect_url: redirect_url,
                 reference: reference_id,
-                institution_id: institution_id
-        )
+                institution_id: institution_id,
+                agreement: new_agreement["id"]
+            )
 
             return new_requsition
         end

@@ -45,8 +45,8 @@ client.set_token("YOUR_TOKEN")
 
 # Get access and refresh token
 # Note: access_token is automatically injected to other requests after you successfully obtain it
-access_token = token_data.access
-refresh_token = token_data.refresh
+access_token = token_data["access"]
+refresh_token = token_data["refresh"]
 
 # Exchange refresh token. Refresh token is valid for 30 days
 refresh_token = client.exchange_token(refresh_token)
@@ -69,9 +69,9 @@ init = client.init_session(
   reference_id: SecureRandom.uuid
 )
 
-link = init.link # bank authorization link
-puts init.link
-requisition_id = init.requisition_id # requisition id that is needed to get an account_id
+link = init["link"] # bank authorization link
+requisition_id = init["id"] # requisition id that is needed to get an account_id
+puts link
 ```
 
 After successful authorization with a bank you can fetch your data (details, balances, transactions)
@@ -82,9 +82,9 @@ After successful authorization with a bank you can fetch your data (details, bal
 ```ruby
 
 # Get account id after you have completed authorization with a bank.
-accounts = client.requisition.get_requisition_by_id(requisition_id)
+requisition_data = client.requisition.get_requisition_by_id(requisition_id)
 # Get account id from list
-account_id =  accounts.accounts[0]
+account_id =  accounts["accounts"][0]
 
 # Instantiate account object
 account = client.account_api(account_id)
@@ -99,6 +99,13 @@ balances = account.get_balances()
 transactions = account.get_transactions()
 # Filter transactions by specific date range
 transactions = account.get_transactions(date_from: "2021-12-01", date_to: "2022-01-30")
+```
+
+## Development
+
+Run all tests in a directory
+```bash
+ruby -Itest tests/tests.rb
 ```
 
 ## Support
