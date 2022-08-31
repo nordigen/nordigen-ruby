@@ -105,7 +105,7 @@ transactions = account.get_transactions(date_from: "2021-12-01", date_to: "2022-
 
 Run all tests in a directory
 ```bash
-ruby -Itest tests/tests.rb
+bundle exec rake test
 ```
 
 ## Support
