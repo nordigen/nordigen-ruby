@@ -27,7 +27,7 @@ module Nordigen
             @requisition = RequisitionsApi.new(client=self)
         end
 
-        def request(params)
+        def request(params: {})
             # HTTP client request
             parameters = {}
             params.each do |key, value|
@@ -36,7 +36,7 @@ module Nordigen
                 end
             end
 
-            @request ||= Faraday.new do |conn|
+            Faraday.new(nil, params) do |conn|
                 conn.url_prefix = BASE_URL
                 conn.headers = @@headers
                 conn.request :json
