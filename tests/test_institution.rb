@@ -18,8 +18,8 @@ module Nordigen
         def test_get_institutions
             # Test get list of institutions
             institutions = @institution.get_institutions("LV")
-            id = institutions.each{ |k,v| return k["id"] if k["id"] == @institution_id}
-            assert_equal(id, @institution_id)
+            id = institutions.collect{ |k,v| k["id"]}
+            assert_includes(id, @institution_id)
         end
 
         def test_get_institution_by_id

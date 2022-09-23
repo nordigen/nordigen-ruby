@@ -6,7 +6,7 @@ require_relative "../lib/nordigen_ruby/api/agreements"
 
 module Nordigen
 
-    class TestAgreement < Test::Unit::TestCase
+    class TestAgreements < Test::Unit::TestCase
 
         def setup()
             client = NordigenClient.new(secret_id: ENV["SECRET_ID"], secret_key: ENV["SECRET_KEY"])

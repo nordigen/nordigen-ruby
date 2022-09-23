@@ -6,9 +6,14 @@ require_relative '../lib/nordigen-ruby'
 
 module Nordigen
 
-    class TestInstitutions < Test::Unit::TestCase
+    class TestAccount < Test::Unit::TestCase
 
         def setup()
+            # Would it be possible to add a sandbox account
+            # to the SANDBOXFINANCE_SFIN0000 institution,
+            # that is always authorized?
+            omit('Not yet possible to test in CI')
+
             client = NordigenClient.new(secret_id: ENV["SECRET_ID"], secret_key: ENV["SECRET_KEY"])
             client.generate_token()
             @account = AccountApi.new(client: client, account_id: ENV["ACCOUNT_ID"])

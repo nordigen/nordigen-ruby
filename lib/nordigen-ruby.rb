@@ -26,10 +26,10 @@ module Nordigen
             @requisition = RequisitionsApi.new(client=self)
         end
 
-        def request(params)
+        def request(params = nil)
             # HTTP client request
             parameters = {}
-            params.each do |key, value|
+            params&.each do |key, value|
                 if value
                     parameters[key] = value
                 end
