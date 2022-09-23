@@ -1,5 +1,4 @@
 require "faraday"
-require "faraday_middleware"
 
 require_relative "nordigen_ruby/api/institutions"
 require_relative "nordigen_ruby/api/agreements"

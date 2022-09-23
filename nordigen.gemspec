@@ -33,8 +33,7 @@ Gem::Specification.new do |spec|
   spec.executables   = `git ls-files -- bin/*`.split("\n")
                       .map { |f| ::File.basename(f) }
 
-  spec.add_dependency "faraday", "~> 1.8.0"
-  spec.add_dependency "faraday_middleware", "~> 1.2.0"
+  spec.add_dependency "faraday", "~> 2.5.2"
 
   spec.require_paths = ["lib"]
 
