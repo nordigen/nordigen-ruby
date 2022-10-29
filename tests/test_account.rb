@@ -46,5 +46,9 @@ module Nordigen
             assert_equal(response["booked"], nil)
         end
 
+        def test_account_transactions_with_date_range
+            omit('Need a test account with enough transactions to filter by date to test this')
+        end
+
     end
 end
