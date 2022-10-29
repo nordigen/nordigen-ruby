@@ -16,7 +16,7 @@ module Nordigen
                 url = "#{url}#{path}/"
             end
 
-            return client.request(params).get(url).body
+            return client.request.get(url, params).body
         end
 
         def get_metadata

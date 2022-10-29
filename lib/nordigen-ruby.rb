@@ -26,15 +26,8 @@ module Nordigen
             @requisition = RequisitionsApi.new(client=self)
         end
 
-        def request(params = nil)
+        def request
             # HTTP client request
-            parameters = {}
-            params&.each do |key, value|
-                if value
-                    parameters[key] = value
-                end
-            end
-
             @request ||= Faraday.new do |conn|
                 conn.url_prefix = BASE_URL
                 conn.headers = @@headers
