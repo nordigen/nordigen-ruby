@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.0.1] - 2022-12-09
+
+- [Fix date filter #15](https://github.com/nordigen/nordigen-ruby/pull/15)
+
 ## [2.0.0] - 2022-05-05
 
 - Use JSON response instead of OpenStruct
