@@ -30,7 +30,9 @@ module Nordigen
     init = client.init_session(
         redirect_url: "https://nordigen.com",
         institution_id: id,
-        reference_id: SecureRandom.uuid
+        reference_id: SecureRandom.uuid,
+        user_language: "en",
+        account_selection: true
     )
     requisition_id = init["id"]
     puts init["link"]

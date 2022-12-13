@@ -1,4 +1,3 @@
-
 module Nordigen
     class RequisitionsApi
 
@@ -10,14 +9,15 @@ module Nordigen
             @client = client
         end
 
-        def create_requisition(redirect_url:, reference:, institution_id:, user_language: "en", agreement: nil)
+        def create_requisition(redirect_url:, reference:, institution_id:, user_language: "en", agreement: nil, account_selection: false)
             # Create requisition. For creating links and retrieving accounts.
             payload = {
                 "redirect": redirect_url,
                 "reference": reference,
                 "institution_id": institution_id,
                 "user_language": user_language,
-            } 
+                "account_selection": account_selection,
+            }
 
             if agreement
                 payload["agreement"] = agreement

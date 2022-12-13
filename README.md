@@ -66,7 +66,11 @@ init = client.init_session(
   # institution id
   institution_id: id,
   # a unique user ID of someone who's using your services, usually it's a UUID
-  reference_id: SecureRandom.uuid
+  reference_id: SecureRandom.uuid,
+  # A two-letter country code (ISO 639-1)
+  user_language: "en",
+  # option to enable account selection view for the end user
+  account_selection: true
 )
 
 link = init["link"] # bank authorization link
