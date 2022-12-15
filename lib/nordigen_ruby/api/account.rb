@@ -2,6 +2,7 @@ module Nordigen
     class AccountApi
 
         ENDPOINT = "accounts/"
+        PREMIUM_ENDPOINT = "accounts/premium/"
         attr_reader :client, :account_id
 
         def initialize(client:, account_id:)
@@ -9,9 +10,14 @@ module Nordigen
             @account_id = account_id
         end
 
-        def get(path = nil, params = nil)
+        def get(path = nil, params = nil, premium: nil)
             # Create Get request
-            url = "#{ENDPOINT}#{@account_id}/"
+            if premium
+                url = "#{PREMIUM_ENDPOINT}#{@account_id}/"
+            else
+                url = "#{ENDPOINT}#{@account_id}/"
+            end
+
             if path
                 url = "#{url}#{path}/"
             end
@@ -42,6 +48,16 @@ module Nordigen
                 "date_to"   => date_to
             }
             return get("transactions", date_range)
+        end
+
+        def get_premium_transactions(date_from: nil, date_to: nil, country: nil)
+            # Access account transactions
+            params = {
+                "date_from" => date_from,
+                "date_to"   => date_to,
+                "country"   => country
+            }
+            return get("transactions", params, premium: true )
         end
 
     end
