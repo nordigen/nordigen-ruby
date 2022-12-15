@@ -10,7 +10,7 @@ module Nordigen
             @account_id = account_id
         end
 
-        def get(path = nil, params = nil, premium = nil)
+        def get(path = nil, params = nil, premium: nil)
             # Create Get request
             if premium
                 url = "#{PREMIUM_ENDPOINT}#{@account_id}/"
@@ -41,13 +41,23 @@ module Nordigen
             return get("balances")
         end
 
-        def get_transactions(date_from: nil, date_to: nil, premium: nil)
+        def get_transactions(date_from: nil, date_to: nil)
             # Access account transactions
             date_range = {
                 "date_from" => date_from,
                 "date_to"   => date_to
             }
-            return get("transactions", date_range, premium)
+            return get("transactions", date_range)
+        end
+
+        def get_premium_transactions(date_from: nil, date_to: nil, country: nil)
+            # Access account transactions
+            params = {
+                "date_from" => date_from,
+                "date_to"   => date_to,
+                "country"   => country
+            }
+            return get("transactions", params, premium: true )
         end
 
     end
