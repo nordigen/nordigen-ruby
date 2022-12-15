@@ -77,7 +77,7 @@ module Nordigen
             return AccountApi.new(client: self, account_id: account_id)
         end
 
-        def init_session(redirect_url:, institution_id:, reference_id:, max_historical_days: 90)
+        def init_session(redirect_url:, institution_id:, reference_id:, max_historical_days: 90, user_language: "en", account_selection: false)
             # Factory method that creates authorization in a specific institution
             # and are responsible for the following steps:
             #   * Creates agreement
@@ -93,6 +93,8 @@ module Nordigen
                 redirect_url: redirect_url,
                 reference: reference_id,
                 institution_id: institution_id,
+                user_language: user_language,
+                account_selection: account_selection,
                 agreement: new_agreement["id"]
             )
 
