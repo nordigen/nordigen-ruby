@@ -98,7 +98,7 @@ balances = account.get_balances()
 # Fetch transactions
 transactions = account.get_transactions()
 # Fetch premium transactions
-transactions = account.get_transactions(premium: true)
+transactions = account.get_premium_transactions(date_from: "2021-12-01", date_to: "2022-01-30", country: "LV")
 # Filter transactions by specific date range
 transactions = account.get_transactions(date_from: "2021-12-01", date_to: "2022-01-30")
 ```
