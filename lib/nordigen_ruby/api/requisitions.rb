@@ -17,13 +17,13 @@ module Nordigen
                 "institution_id": institution_id,
                 "user_language": user_language,
                 "account_selection": account_selection,
-                "redirect_immediate" redirect_immediate
+                "redirect_immediate": redirect_immediate
             }
 
             if agreement
                 payload["agreement"] = agreement
             end
-                        
+
             return client.request.post(ENDPOINT, payload).body
         end
 
@@ -40,7 +40,7 @@ module Nordigen
         end
 
         def delete_requisition(requisition_id)
-            # Delete requisition by id 
+            # Delete requisition by id
             return client.request.delete("#{ENDPOINT}#{requisition_id}/").body
         end
 
