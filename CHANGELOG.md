@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.1.1] - 2022-12-19
+
+- [add redirect_immediate param #20](https://github.com/nordigen/nordigen-ruby/pull/20)
+
+
 ## [2.1.0] - 2022-12-15
 
 - [Add user_language and account_selection params for requisition #18](https://github.com/nordigen/nordigen-ruby/pull/18)
