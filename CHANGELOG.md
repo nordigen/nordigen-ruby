@@ -1,5 +1,11 @@
 # Changelog
 
+## [2.2.0] - 2022-12-19
+
+- Fix redirect_immediate parameter
+- Add SSN parameter
+- Add access_valid_for_days for init method
+
 ## [2.1.1] - 2022-12-19
 
 - [add redirect_immediate param #20](https://github.com/nordigen/nordigen-ruby/pull/20)

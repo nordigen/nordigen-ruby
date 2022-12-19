@@ -9,21 +9,36 @@ module Nordigen
             @client = client
         end
 
-        def create_requisition(redirect_url:, reference:, institution_id:, user_language: "en", agreement: nil, account_selection: false, redirect_immediate: false)
+        def create_requisition(
+            redirect_url:,
+            reference:,
+            institution_id:,
+            user_language: "en",
+            agreement: nil,
+            account_selection: false,
+            redirect_immediate: false,
+            ssn: nil
+        )
             # Create requisition. For creating links and retrieving accounts.
+            # puts account_selection
+            # puts redirect_immediate
             payload = {
                 "redirect": redirect_url,
                 "reference": reference,
                 "institution_id": institution_id,
                 "user_language": user_language,
                 "account_selection": account_selection,
-                "redirect_immediate" redirect_immediate
+                "redirect_immediate": redirect_immediate,
             }
 
             if agreement
                 payload["agreement"] = agreement
             end
-                        
+
+            if ssn
+                payload["ssn"] = ssn
+            end
+
             return client.request.post(ENDPOINT, payload).body
         end
 
@@ -40,7 +55,7 @@ module Nordigen
         end
 
         def delete_requisition(requisition_id)
-            # Delete requisition by id 
+            # Delete requisition by id
             return client.request.delete("#{ENDPOINT}#{requisition_id}/").body
         end
 
