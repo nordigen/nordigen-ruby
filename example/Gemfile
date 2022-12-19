@@ -19,7 +19,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.7'
 gem 'dotenv'
 
-gem 'nordigen-ruby'
+gem 'nordigen-ruby', '~> 2.1.1'
 
 # Local gem
 # gem 'nordigen-ruby', path: '../'
