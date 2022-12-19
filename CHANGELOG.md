@@ -1,8 +1,10 @@
 # Changelog
 
-## [2.1.2] - 2022-12-19
+## [2.2.0] - 2022-12-19
 
 - Fix redirect_immediate parameter
+- Add SSN parameter
+- Add access_valid_for_days for init method
 
 ## [2.1.1] - 2022-12-19
 

@@ -77,7 +77,17 @@ module Nordigen
             return AccountApi.new(client: self, account_id: account_id)
         end
 
-        def init_session(redirect_url:, institution_id:, reference_id:, max_historical_days: 90, user_language: "en", account_selection: false)
+        def init_session(
+            redirect_url:,
+            institution_id:,
+            reference_id:,
+            max_historical_days: 90,
+            access_valid_for_days: 90,
+            user_language: "en",
+            account_selection: false,
+            redirect_immediate: false,
+            ssn: nil
+        )
             # Factory method that creates authorization in a specific institution
             # and are responsible for the following steps:
             #   * Creates agreement
@@ -86,8 +96,10 @@ module Nordigen
             # Create agreement
             new_agreement = @agreement.create_agreement(
                 institution_id: institution_id,
-                max_historical_days: max_historical_days
+                max_historical_days: max_historical_days,
+                access_valid_for_days: access_valid_for_days
             )
+
             # Create requisition
             new_requsition = @requisition.create_requisition(
                 redirect_url: redirect_url,
@@ -95,7 +107,9 @@ module Nordigen
                 institution_id: institution_id,
                 user_language: user_language,
                 account_selection: account_selection,
-                agreement: new_agreement["id"]
+                redirect_immediate: redirect_immediate,
+                agreement: new_agreement["id"],
+                ssn: ssn
             )
 
             return new_requsition
