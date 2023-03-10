@@ -88,10 +88,10 @@ After successful authorization with a bank you can fetch your data (details, bal
 # Get account id after you have completed authorization with a bank.
 requisition_data = client.requisition.get_requisition_by_id(requisition_id)
 # Get account id from list
-account_id =  accounts["accounts"][0]
+account_id =  requisition_data["accounts"][0]
 
 # Instantiate account object
-account = client.account_api(account_id)
+account = client.account(account_id)
 
 # Fetch account metadata
 meta_data = account.get_metadata()
