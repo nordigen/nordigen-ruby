@@ -1,6 +1,6 @@
 # Changelog
 
-## [2.2.0] - 2022-12-19
+## [2.1.2] - 2022-12-19
 
 - Fix redirect_immediate parameter
 - Add SSN parameter
