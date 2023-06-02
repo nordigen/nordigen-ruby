@@ -34,6 +34,7 @@ module Nordigen
         }
         conn.request :authorization, "Bearer", access_token
         conn.request :json
+        conn.response :logger, nil, { headers: true, bodies: true, errors: true }
         conn.response :json
       end
     end
