@@ -27,14 +27,14 @@ Gem::Specification.new do |spec|
     /\A\.git/,
     /\Atest/,
     /\Aexample/,
-    /\Amain.rb/
+    /\Amain.rb/,
   )
   spec.files = `git ls-files`.split("\n").reject { |f| ignored.match(f) }
-  spec.executables   = `git ls-files -- bin/*`.split("\n")
-                      .map { |f| ::File.basename(f) }
+  spec.executables = `git ls-files -- bin/*`.split("\n").
+    map { |f| ::File.basename(f) }
 
   spec.add_dependency "faraday", "~> 2.5"
 
   spec.require_paths = ["lib"]
-
+  spec.metadata["rubygems_mfa_required"] = "true"
 end
