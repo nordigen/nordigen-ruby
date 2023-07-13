@@ -1,10 +1,10 @@
 # Nordigen Ruby Library
 
-This is official Ruby client library for [Nordigen](https://nordigen.com/en).
+This is official Ruby client library for [GoCardless Bank Account Data](https://gocardless.com/bank-account-data/).
 
-For a full list of endpoints and arguments, see the [docs](https://nordigen.com/en/account_information_documenation/api-documention/overview/).
+For a full list of endpoints and arguments, see the [docs](https://developer.gocardless.com/bank-account-data/quick-start-guide).
 
-Before starting to use API you will need to create a new secret and get your `SECRET_ID` and `SECRET_KEY` from the [Nordigen's Open Banking Portal](https://ob.nordigen.com/user-secrets/).
+Before starting to use API you will need to create a new secret and get your `SECRET_ID` and `SECRET_KEY` from the [GoCardless Bank Account Data Portal](https://bankaccountdata.gocardless.com/user-secrets/).
 
 ## Requirements
 
@@ -31,7 +31,7 @@ Example code can be found in `main.rb` file and Ruby on Rails example applicatio
 require 'securerandom'
 require 'nordigen-ruby'
 
-# Get secret_id and secret_key from ob.nordigen.com portal and pass to NordigenClient or load from .env file
+# Get secret_id and secret_key from bankaccountdata.gocardless.com/user-secrets/ portal and pass to NordigenClient or load from .env file
 client = Nordigen::NordigenClient.new(
   secret_id: "SECRET_ID",
   secret_key: "SECRET_KEY"
@@ -62,7 +62,7 @@ id = "REVOLUT_REVOGB21"
 # Returns requisition_id and link to initiate authorization with a bank
 init = client.init_session(
   # redirect url after successful authentication
-  redirect_url: "https://nordigen.com",
+  redirect_url: "https://gocardless.com",
   # institution id
   institution_id: id,
   # a unique user ID of someone who's using your services, usually it's a UUID
@@ -116,4 +116,4 @@ bundle exec rake test
 
 ## Support
 
-For any inquiries please contact support at [support@nordigen.com](support@nordigen.com) or create an issue in repository.
+For any inquiries please contact support at [bank-account-data-support@gocardless.com](bank-account-data-support@gocardless.com) or create an issue in repository.

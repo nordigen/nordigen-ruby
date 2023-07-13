@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.name = "nordigen-ruby"
   spec.version = Nordigen::VERSION
   spec.authors = ["Nordigen Solutions"]
-  spec.email = ["support@nordigen.com"]
+  spec.email = ["bank-account-data-support@gocardless.com"]
   spec.summary = "Nordigen client for Ruby"
   spec.homepage = "https://github.com/nordigen/nordigen-ruby"
   spec.description = "Nordigen official API client for Ruby"
