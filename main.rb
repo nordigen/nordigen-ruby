@@ -4,7 +4,7 @@ require_relative "lib/nordigen-ruby"
 
 module Nordigen
     # Load token from .env file or replace with a string value
-    # Secrets can be generated from ob.nordigen.com portal
+    # Secrets can be generated from bankaccountdata.gocardless.com/user-secrets/ portal
     client = Nordigen::NordigenClient.new(
         secret_id: "SECRET_ID",
         secret_key: "SECRET_KEY"
@@ -28,7 +28,7 @@ module Nordigen
 
     # Initialize bank authorization session
     init = client.init_session(
-        redirect_url: "https://nordigen.com",
+        redirect_url: "https://gocardless.com",
         institution_id: id,
         reference_id: SecureRandom.uuid,
         user_language: "en",

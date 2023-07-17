@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.1.3] - 2023-13-07
+
+- Update URLs to GoCardless
+
 ## [2.1.2] - 2022-12-19
 
 - Fix redirect_immediate parameter

@@ -40,7 +40,7 @@ module Nordigen
             uuid = SecureRandom.uuid
             id = "REVOLUT_REVOGB21"
             response = @client.init_session(
-                redirect_url: "https://nordigen.com", institution_id: id, reference_id: uuid
+                redirect_url: "https://gocardless.com", institution_id: id, reference_id: uuid
             )
             assert_equal(response["institution_id"], id)
 
