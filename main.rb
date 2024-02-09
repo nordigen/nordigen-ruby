@@ -28,7 +28,7 @@ module Nordigen
 
     # Initialize bank authorization session
     init = client.init_session(
-        redirect_url: "https://gocardless.com",
+        redirect_url: "https://bankaccountdata.gocardless.com",
         institution_id: id,
         reference_id: SecureRandom.uuid,
         user_language: "en",

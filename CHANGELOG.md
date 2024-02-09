@@ -1,5 +1,10 @@
 # Changelog
 
+
+## [2.2.0] - 2024-02-09
+
+- Change base URL to bankaccountdata.gocardless.com
+
 ## [2.1.3] - 2023-13-07
 
 - Update URLs to GoCardless
