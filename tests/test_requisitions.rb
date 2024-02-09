@@ -16,7 +16,7 @@ module Nordigen
 
             @institution_id = "REVOLUT_REVOGB21"
             @req_params = {
-                redirect_url: "https://ob.gocardless.com",
+                redirect_url: "https://bankaccountdata.gocardless.com",
                 reference: SecureRandom.uuid,
                 institution_id: @institution_id
             }
