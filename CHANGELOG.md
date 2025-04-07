@@ -1,6 +1,10 @@
 # Changelog
 
 
+## [2.2.1] - 2025-04-07
+
+- Add maintenance notice to README
+
 ## [2.2.0] - 2024-02-09
 
 - Change base URL to bankaccountdata.gocardless.com
