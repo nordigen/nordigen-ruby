@@ -1,20 +1,19 @@
+# frozen_string_literal: true
+
 require 'securerandom'
-require_relative "../services/client"
+require_relative '../services/client'
 
 class AgreementsController < ApplicationController
-    def index
-        id = params[:id]
+  def index
+    id = params[:id]
 
-        if id == nil
-            redirect_to '/'
-        end
+    redirect_to '/' if id.nil?
 
-        client = Client.new().create_client()
-        uuid = SecureRandom.uuid
-        redirect_url = "http://localhost:3000/results/"
-        init = client.init_session(redirect_url: redirect_url, institution_id: id, reference_id: uuid)
-        session[:requisition_id] = init["id"]
-        redirect_to init["link"]
-
-    end
+    client = Client.new.create_client
+    uuid = SecureRandom.uuid
+    redirect_url = 'http://localhost:3000/results/'
+    init = client.init_session(redirect_url: redirect_url, institution_id: id, reference_id: uuid)
+    session[:requisition_id] = init['id']
+    redirect_to init['link']
+  end
 end
