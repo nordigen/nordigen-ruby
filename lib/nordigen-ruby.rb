@@ -29,7 +29,7 @@ module Nordigen
 
     def request
       # HTTP client request
-      @request ||= Faraday.new do |conn|
+      @request ||= Faraday.new(request: { timeout: 10 }) do |conn|
         conn.url_prefix = BASE_URL
         conn.headers = @@headers
         conn.request :json
